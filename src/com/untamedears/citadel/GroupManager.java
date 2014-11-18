@@ -129,7 +129,11 @@ public class GroupManager {
                 for (FactionMember fm : dbMembers) {
                     try {
                         members.add(UUID.fromString(fm.getMemberName()));
-                    } catch (Exception ex) {}
+                    } catch (Exception ex) {
+                    	String warningMessage = "Exception in GroupManager.java could not get information on group name " + 
+                    		(groupName==null ? "null" : groupName) + ".  " + ex.toString();
+                    	Citadel.warning(warningMessage);
+                    }
                 }
                 this.memberStorage.put(normalizedGroupName, members);
             }
