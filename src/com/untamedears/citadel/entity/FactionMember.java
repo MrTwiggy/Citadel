@@ -31,6 +31,13 @@ public class FactionMember implements Comparable {
 	public FactionMember(String memberName, String factionName){
 		this.memberName = memberName;
 		this.factionName = factionName;
+		
+		if (memberName == null){
+			Citadel.info("FactionMember.Java - Faction Member created without member name.  For faction name " + ((factionName==null)?"null":factionName));
+		}
+		if (factionName == null){
+			Citadel.info("FactionMember.Java - Faction Member created without faction name.  For member name " + ((memberName==null)?"null":memberName));
+		}
 	}
 
 	public String getMemberName(){
@@ -47,7 +54,21 @@ public class FactionMember implements Comparable {
     }
 
     public Player getPlayer() {
-        return Bukkit.getPlayer(UUID.fromString(memberName));
+    	Player thePlayer;
+    	
+    	try {
+    		thePlayer = Bukkit.getPlayer(UUID.fromString(memberName));
+    	} catch (Exception ex) {
+    		thePlayer = null;
+    		
+    		String errorMessage = "Exception in FactionMember.java for member name " + (memberName == null ? "null" : memberName) +
+    				" that is part of faction " + (factionName == null ? "null" : factionName) +
+    				ex.toString()
+    				;
+    		Citadel.warning(errorMessage);
+    	}
+    	
+        return thePlayer; 
     }
 
 	public String getFactionName(){
