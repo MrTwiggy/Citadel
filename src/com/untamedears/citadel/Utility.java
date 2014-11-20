@@ -581,7 +581,7 @@ public class Utility {
     public static UUID toAccountId(UUID id) {
         // See if it is a player UUID
         try {
-            if (Citadel.getAccountIdManager().getPlayerName(id) != null) {
+            if (NameAPI.getCurrentName(id) != null) {
                 return id;
             }
         } catch (Exception ex) {}

@@ -1,6 +1,7 @@
 package com.untamedears.citadel.entity;
 
 import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,6 +11,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.untamedears.citadel.Citadel;
+import com.valadian.nametracker.NameAPI;
 
 /**
  * User: JonnyD
@@ -43,7 +45,7 @@ public class Moderator implements Comparable {
 	}
 
     public String getPlayerName() {
-        return Citadel.getAccountIdManager().getPlayerName(this.memberName);
+        return NameAPI.getCurrentName(UUID.fromString(this.memberName));
     }
 	
     public Player getPlayer() {

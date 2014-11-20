@@ -10,6 +10,7 @@ import org.bukkit.event.HandlerList;
 import com.untamedears.citadel.Citadel;
 import com.untamedears.citadel.entity.Faction;
 import com.untamedears.citadel.events.GroupChangeType;
+import com.valadian.nametracker.NameAPI;
 
 public class GroupChangeEvent extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
@@ -66,6 +67,6 @@ public class GroupChangeEvent extends Event implements Cancellable {
     }
 
     public String getTargetPlayerName() {
-        return Citadel.getAccountIdManager().getPlayerName(targetAccount_);
+        return NameAPI.getCurrentName(targetAccount_);
     }
 }

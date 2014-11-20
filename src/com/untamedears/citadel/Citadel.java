@@ -51,7 +51,6 @@ public class Citadel extends JavaPlugin {
     private static final PersonalGroupManager personalGroupManager = new PersonalGroupManager();
     private static final ConfigManager configManager = new ConfigManager();
     private static final Random randomGenerator = new Random();
-    private static final AccountIdManager accountIdManager = new AccountIdManager();
     private static CitadelCachingDao dao;
     private static Citadel plugin;
 
@@ -137,7 +136,6 @@ public class Citadel extends JavaPlugin {
     
     public void setUpStorage(){
         groupManager.initialize(dao);
-        accountIdManager.initialize(dao);
         personalGroupManager.initialize(dao);
         
         ReinforcementStorage reinforcementStorage = new ReinforcementStorage(dao);
@@ -153,7 +151,6 @@ public class Citadel extends JavaPlugin {
             pm.registerEvents(new EntityListener(), this);
             pm.registerEvents(new InventoryListener(), this);
             pm.registerEvents(new WorldListener(), this);
-            pm.registerEvents(accountIdManager, this);
         }
         catch(Exception e)
         {
@@ -228,10 +225,6 @@ public class Citadel extends JavaPlugin {
     
     public static ConfigManager getConfigManager(){
         return configManager;
-    }
-
-    public static AccountIdManager getAccountIdManager() {
-        return accountIdManager;
     }
     
     public static Citadel getPlugin(){

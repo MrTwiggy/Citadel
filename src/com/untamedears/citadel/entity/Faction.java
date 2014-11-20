@@ -13,6 +13,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.untamedears.citadel.Citadel;
+import com.valadian.nametracker.NameAPI;
 
 /**
  * Created by IntelliJ IDEA.
@@ -107,7 +108,7 @@ public class Faction implements Serializable, Comparable {
     }
 
     public String getFounderName() {
-        return Citadel.getAccountIdManager().getPlayerName(this.founderId);
+        return NameAPI.getCurrentName(this.founderId);
     }
 
     public Player getFounderPlayer() {

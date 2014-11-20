@@ -11,6 +11,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.untamedears.citadel.Citadel;
+import com.valadian.nametracker.NameAPI;
 
 /**
  * User: JonnyD & chrisrico
@@ -50,7 +51,7 @@ public class FactionMember implements Comparable {
 	}
 
     public String getPlayerName() {
-        return Citadel.getAccountIdManager().getPlayerName(UUID.fromString(this.memberName));
+        return NameAPI.getCurrentName(UUID.fromString(this.memberName));
     }
 
     public Player getPlayer() {
